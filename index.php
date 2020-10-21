@@ -33,7 +33,7 @@ $villes = $sql->fetchAll();
                 echo $ville . ' est la capitale ' . $pays;
                 } elseif ($ville == 'Rome') {
                 $pays = "Italie";
-                echo $ville . ' est la capitale de l ' . $pays;
+                echo $ville . " est la capitale de l'" . $pays;
                 } elseif ($ville == 'Tokyo') {
                 $pays = 'du Japon';
                 echo $ville . ' est la capitale ' . $pays;
