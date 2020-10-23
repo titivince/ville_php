@@ -3,13 +3,12 @@ $pdo = new PDO('mysql:host=mysql;dbname=basedeteste;host=127.0.0.1', 'root', '',
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
 
 $sql = $pdo->query("SELECT * FROM ville"); //request bdd
-
 $villes = $sql->fetchAll();
 
 if(isset($_GET['villes'])) {
     $cap = $_GET['villes'];
-    $sql = $pdo->prepare("SELECT pays FROM ville WHERE capital = :capital");//prepare sql request
-    $sql->bindParam(":capital", $cap);                           // bind param
+    $sql = $pdo->prepare("SELECT pays FROM ville WHERE capital = :capital"); //prepare sql request
+    $sql->bindParam(":capital", $cap);                            // bind param
     $sql->execute();         //execute sql request
     $fetch = $sql->fetch();  //fetch sql request
     $pays = $fetch['pays'];
@@ -31,8 +30,7 @@ if(isset($_GET['villes'])) {
                     <select name="villes" class="form-control form-control-sm">
                         <?php foreach ($villes as $list): ?>                    <!--create select with bdd-->
                             <option name="<?= $list['capital'] ?>"> <?= $list['capital'] ?> </option>
-                        <?php $list['pays'];
-                        endforeach; ?>
+                        <?php endforeach; ?>
                     </select>
                 </div>
                 <input type="submit" class="btn btn-outline-primary">
