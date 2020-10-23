@@ -29,7 +29,7 @@ if(isset($_GET['villes'])) {
                 <div class="form-group">
                     <label>Quelles villes choississez-vous ?</label>
                     <select name="villes" class="form-control form-control-sm">
-                        <?php foreach ($villes as $list): ?>                    //create select with bdd
+                        <?php foreach ($villes as $list): ?>                    <!--create select with bdd-->
                             <option name="<?= $list['capital'] ?>"> <?= $list['capital'] ?> </option>
                         <?php $list['pays'];
                         endforeach; ?>
