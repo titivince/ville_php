@@ -12,6 +12,7 @@ if(isset($_GET['villes'])) {
     $sql->execute();         //execute sql request
     $fetch = $sql->fetch();  //fetch sql request
     $pays = $fetch['pays'];
+    $res = "La $pays a pour capital $cap";
 }
 ?>
 <!DOCTYPE html>
@@ -23,23 +24,21 @@ if(isset($_GET['villes'])) {
     </head>
     <body>
         <div class="container p-5">
-            <h1>Villes</h1>
+            <h1>Capitale</h1>
             <form method="GET" action="index.php">
                 <div class="form-group">
-                    <label>Quelles villes choississez-vous ?</label>
+                    <label>Quelle capital choississez-vous ?</label>
                     <select name="villes" class="form-control form-control-sm">
                         <?php foreach ($villes as $list): ?>                    <!--create select with bdd-->
-                            <option name="<?= $list['capital'] ?>"> <?= $list['capital'] ?> </option>
+                            <option> <?= $list['capital'] ?> </option>
                         <?php endforeach; ?>
                     </select>
                 </div>
                 <input type="submit" class="btn btn-outline-primary">
             </form><br>
-            <?php
-            if(isset($_GET['villes'])) {            //print result
-                echo "La $pays a pour capital $cap";
-            }
-            ?>
+            <?php if(isset($res)):?>            <!--print result-->
+            <h1><?= $res ?></h1>
+            <?php endif; ?>
         </div>
     </body>
 </html>
